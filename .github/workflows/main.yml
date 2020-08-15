@@ -10,17 +10,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1
+    - name: 部署代码
+      uses: actions/checkout@v2
+    - name: 部署Java环境
+      uses: actions/setup-java@v1
       with:
         java-version: 10
-    - uses: eskatos/gradle-command-action@v1
+    - name: 静态检查代码
+      uses: codeinspectorio/github-action@master
+      with:
+        repo_token: ${{ secrets.REPO_TOKEN }}
+        code_inspector_access_key: ${{ secrets.CODE_INSPECTOR_ACCESS_KEY }}
+        code_inspector_secret_key: ${{ secrets.CODE_INSPECTOR_SECRET_KEY }}
+        min_quality_grade: WARNING
+        min_quality_score: 50
+        max_defects_rate: 0.001
+        max_complex_functions_rate: 0.01
+        max_long_functions_rate: 0.01
+        project_name: PondPlugin
+        max_timeout_sec: 600
+    - name: 构建插件
+      uses: eskatos/gradle-command-action@v1
       with:
         gradle-executable: gradlew
         arguments: buildPlugin
         wrapper-cache-enabled: true
         dependencies-cache-enabled: true
-    - uses: actions/upload-artifact@v2
+    - name: 导出插件到产出
+      uses: actions/upload-artifact@v2
       with:
         name: output
         path: build/distributions/*
