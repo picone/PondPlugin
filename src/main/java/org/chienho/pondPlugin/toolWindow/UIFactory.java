@@ -13,8 +13,8 @@ public class UIFactory implements ToolWindowFactory {
 
     /**
      * 创建新窗口内容
-     * @param project
-     * @param toolWindow
+     * @param project 工程项目
+     * @param toolWindow 当前窗口实例
      */
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {

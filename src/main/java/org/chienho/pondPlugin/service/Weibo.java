@@ -1,14 +1,12 @@
 package org.chienho.pondPlugin.service;
 
-import com.intellij.util.io.URLUtil;
-import org.chienho.pondPlugin.model.response.ContainerBaseCard;
-import org.chienho.pondPlugin.model.response.ContainerIndex;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.util.Url;
 import com.intellij.util.Urls;
 import com.intellij.util.io.HttpRequests;
-import com.sun.istack.Nullable;
+import com.intellij.util.io.URLUtil;
+import org.chienho.pondPlugin.model.response.ContainerBaseCard;
+import org.chienho.pondPlugin.model.response.ContainerIndex;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,14 +20,7 @@ public class Weibo {
     final static String CONTAINER_ID_HOT = "106003type=25&t=3&disable_hot=1&filter_type=realtimehot";
     final static String USER_AGENT = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko)";
 
-    private final static ObjectMapper MAPPER = new ObjectMapper();
-
-    static {
-        MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    }
-
-    @Nullable
-    public static List<ContainerBaseCard> getContainerIndex(String containerId) {
+    public static @Nullable List<ContainerBaseCard> getContainerIndex(String containerId) {
         try {
             Map<String, String> parameters = new HashMap<>();
             parameters.put("containerid", containerId);
@@ -41,7 +32,7 @@ public class Weibo {
                         connection.setRequestProperty("user-agent", USER_AGENT);
                     })
                     .connect(request -> {
-                        ContainerIndex containerIndex = MAPPER.readValue(request.readString(), ContainerIndex.class);
+                        ContainerIndex containerIndex = JsonDecode.getMapper().readValue(request.readString(), ContainerIndex.class);
                         if (containerIndex == null || containerIndex.ok != 1 || containerIndex.data == null) {
                             return null;
                         }

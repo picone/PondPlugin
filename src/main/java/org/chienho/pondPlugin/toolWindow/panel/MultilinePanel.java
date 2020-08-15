@@ -1,4 +1,4 @@
-package org.chienho.pondPlugin.toolWindow;
+package org.chienho.pondPlugin.toolWindow.panel;
 
 import com.intellij.util.Url;
 import org.chienho.pondPlugin.model.MultiHtmlText;

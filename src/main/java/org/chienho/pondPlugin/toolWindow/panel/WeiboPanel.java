@@ -4,7 +4,6 @@ import com.intellij.util.Url;
 import org.chienho.pondPlugin.model.MultiHtmlText;
 import org.chienho.pondPlugin.model.response.ContainerBaseCard;
 import org.chienho.pondPlugin.service.Weibo;
-import org.chienho.pondPlugin.toolWindow.MultilinePanel;
 import org.chienho.pondPlugin.toolWindow.component.MultilineTextList;
 import org.chienho.pondPlugin.util.URLParser;
 import org.jetbrains.annotations.NotNull;
@@ -98,7 +97,6 @@ public class WeiboPanel extends MultilinePanel {
                     }
                 }
             }
-
             list.setEnabled(true);
             textList.goTo(modelList, false);
         }).start();

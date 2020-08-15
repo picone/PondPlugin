@@ -1,22 +1,29 @@
 <idea-plugin>
-    <id>chienho.WeiboPlugin</id>
-    <name>ChienHo</name>
-    <vendor email="picone@163.com">ChienHo</vendor>
+    <id>org.chienho.PondPlugin</id>
+    <name>PondPlugin</name>
+    <version>1.0.0</version>
+    <vendor email="picone@163.com" url="https://github.com/picone">ChienHo</vendor>
 
+    <description><![CDATA[
+      <p>这是个IntelliJ平台下IDE的摸鱼插件，目前支持微博</p>
+      <p>详细功能:<p>
+      <ul>
+        <li>微博热搜刷新，详细内容获取</li>
+      </ul>
+      <p>如果你对这个插件感兴趣，欢迎提交issue到<a href="https://github.com/picone/PondPlugin">picone/PondPlugin</a></p>
+    ]]></description>
     <description>微博摸鱼插件，能定时刷新微博，查看指定人微博内容，新微博通知等等功能。哈哈哈哈哈哈</description>
 
-    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="Pond"
+        <toolWindow id="pond"
                     anchor="right"
                     factoryClass="org.chienho.pondPlugin.toolWindow.UIFactory"
-                    canCloseContents="true"/>
+                    canCloseContents="true"
+                    secondary="true"/>
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
     </actions>
 </idea-plugin>
