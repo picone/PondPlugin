@@ -1,0 +1,22 @@
+<idea-plugin>
+    <id>chienho.WeiboPlugin</id>
+    <name>ChienHo</name>
+    <vendor email="picone@163.com">ChienHo</vendor>
+
+    <description>微博摸鱼插件，能定时刷新微博，查看指定人微博内容，新微博通知等等功能。哈哈哈哈哈哈</description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Pond"
+                    anchor="right"
+                    factoryClass="org.chienho.pondPlugin.toolWindow.UIFactory"
+                    canCloseContents="true"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
